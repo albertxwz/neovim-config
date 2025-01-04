@@ -63,3 +63,30 @@ autocmd("Filetype", {
         vim.opt_local.spell = true
     end
 })
+
+local lspconfig = require('lspconfig')
+autocmd("Filetype", {
+  pattern = {"cpp", "c", "hpp", "h"},
+  callback = function()
+    local clients = vim.lsp.get_active_clients()
+    for _, client in ipairs(clients) do
+      if client.name == 'clangd' then
+        return
+      end
+    end
+    lspconfig.clangd.setup{}
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    local clients = vim.lsp.get_active_clients()
+    for _, client in ipairs(clients) do
+      if client.name == 'pyright' then
+        return
+      end
+    end
+    lspconfig.pyright.setup{}
+  end,
+})
