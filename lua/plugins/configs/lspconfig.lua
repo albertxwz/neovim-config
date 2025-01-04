@@ -17,10 +17,11 @@ local formatting_servers = {
     jsonls = {},
     dockerls = {},
     bashls = {},
-    gopls = {},
+    clangd = {},
     ruff_lsp = {},
     vimls = {},
-    yamlls = {}
+    yamlls = {},
+    pyright = {}
 }
 
 -- Merge
