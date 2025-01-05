@@ -45,6 +45,11 @@ autocmd("BufEnter", {
     command = "set fo-=c fo-=r fo-=o"
 })
 
+autocmd("BufEnter", {
+  pattern = "",
+  command = "TSEnable highlight"
+})
+
 autocmd("Filetype", {
     pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
     command = "setlocal shiftwidth=2 tabstop=2"
@@ -65,7 +70,7 @@ autocmd("Filetype", {
 })
 
 local lspconfig = require('lspconfig')
-autocmd("Filetype", {
+autocmd("FileType", {
   pattern = {"cpp", "c", "hpp", "h"},
   callback = function()
     local clients = vim.lsp.get_active_clients()
@@ -78,7 +83,7 @@ autocmd("Filetype", {
   end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
+autocmd('FileType', {
   pattern = 'python',
   callback = function()
     local clients = vim.lsp.get_active_clients()

@@ -59,6 +59,7 @@ opt.listchars = {
     precedes = "«",
     nbsp = "×"
 }
+opt.relativenumber = true
 
 -- Hide cmd line
 opt.cmdheight = 0      -- more space in the neovim command line for displaying messages
